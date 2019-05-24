@@ -29,11 +29,15 @@ gcloud config set compute/region us-west1
 ```
 
 ```
-set -x HELLO_VERSION v1.1
+set -x HELLO_VERSION v1.4
 set -x PROJECT_ID (gcloud config get-value project -q)
 docker build -t gcr.io/$PROJECT_ID/hello-gcp:$HELLO_VERSION hello-gcp
 docker push gcr.io/$PROJECT_ID/hello-gcp:$HELLO_VERSION
 ```
+
+Test image in docker desktop
+
+    docker run -p 8080:8080 gcr.io/$PROJECT_ID/hello-gcp:$HELLO_VERSION
 
 Visit **Container Registry** in your GCP project to see this image in the 
 registry.
