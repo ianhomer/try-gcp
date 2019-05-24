@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hello-gcp
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  tls:
+    - hosts:
+        - ingress.k8s.purplepip.com
+      secretName: hello-tls
+  rules:
+    - host: ingress.k8s.purplepip.com
+    - http:
+        paths:
+          - path: /*
+            backend:
+              serviceName: hello-gcp
+              servicePort: 80

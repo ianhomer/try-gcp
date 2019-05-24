@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-gcp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello-gcp
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: hello-gcp
+    spec:
+      containers:
+        - image: gcr.io/try-10/hello-gcp:v1.1
+          imagePullPolicy: IfNotPresent
+          name: hello-gcp
+          ports:
+            - containerPort: 80
+              protocol: TCP

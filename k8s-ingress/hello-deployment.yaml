@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello-nginx
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: hello-nginx
+    spec:
+      containers:
+        - env:
+            - name: MY_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: mock-secret
+                  key: my-secret
+          image: gcr.io/try-10/hello-nginx:v1.13
+          imagePullPolicy: IfNotPresent
+          name: hello-nginx
+          ports:
+            - containerPort: 80
+              protocol: TCP
