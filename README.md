@@ -37,7 +37,7 @@ docker push gcr.io/$PROJECT_ID/hello-gcp:$HELLO_VERSION
 
 Test image in docker desktop
 
-    docker run -p 8080:8080 gcr.io/$PROJECT_ID/hello-gcp:$HELLO_VERSION
+    docker run -p 8080:8080 gcr.io/$PROJECT_ID/hello-gcp:latest
 
 Visit **Container Registry** in your GCP project to see this image in the 
 registry.
