@@ -48,8 +48,9 @@ Apply
 
 # Restore State    
     
-    terraform import google_app_engine_application.app 
-    terraform import google_app_engine_firewall_rule.rule
+    terraform import google_app_engine_application.app try-10
+    terraform import google_app_engine_firewall_rule.whitelist
+    terraform import google_app_engine_firewall_rule.deny_all
 
 
 # Thanks

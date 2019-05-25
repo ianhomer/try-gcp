@@ -1,9 +1,7 @@
-/*
 resource "google_app_engine_application" "app" {
   project     = "try-10"
   location_id = "us-west2"
 }
-*/
 
 resource "google_app_engine_firewall_rule" "whitelist" {
   project = "try-10"
