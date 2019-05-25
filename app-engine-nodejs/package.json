@@ -9,6 +9,7 @@
   },
   "scripts": {
     "start": "node app.js",
+    "server": "nodemon index.js",
     "test": "repo-tools test app --url localhost:8080/static/"
   },
   "cloud-repo-tools": {
