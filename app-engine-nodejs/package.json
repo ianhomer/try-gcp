@@ -1,0 +1,28 @@
+{
+  "name": "app-engine-nodejs",
+  "description": "Node.JS for Google App Engine",
+  "version": "0.0.1",
+  "private": true,
+  "license": "Apache Version 2.0",
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "repo-tools test app --url localhost:8080/static/"
+  },
+  "cloud-repo-tools": {
+    "test": {
+      "app": {
+        "msg": "hello",
+        "port": 8080
+      }
+    }
+  },
+  "dependencies": {
+    "express": "4.16.4"
+  },
+  "devDependencies": {
+    "@google-cloud/nodejs-repo-tools": "3.3.0"
+  }
+}
