@@ -8,6 +8,7 @@
     "node": ">=10"
   },
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "start": "node app.js",
     "server": "nodemon index.js",
     "test": "repo-tools test app --url localhost:8080/static/",
