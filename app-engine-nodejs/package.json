@@ -29,6 +29,7 @@
     "@google-cloud/nodejs-repo-tools": "^3.3.0"
   },
   "resolutions": {
-    "minimist": "^1.2.5"
+    "minimist": "^1.2.5",
+    "kind-of": "^6.0.3"
   }
 }
