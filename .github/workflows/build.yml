@@ -21,7 +21,6 @@ jobs:
       run: |
         cd app-engine-nodejs
         npm install
-        npm run build
       env:
         CI: true
 
