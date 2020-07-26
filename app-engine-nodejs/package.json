@@ -12,7 +12,7 @@
     "start": "node app.js",
     "server": "nodemon index.js",
     "test": "repo-tools test app --url localhost:8080/static/",
-    "update": "npx npm-check-updates -u"
+    "update": "npx npm-check-updates -u && npm install --package-lock-only --no-audit"
   },
   "cloud-repo-tools": {
     "test": {
