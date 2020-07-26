@@ -22,7 +22,6 @@ jobs:
         npm install
         npm run update
         npm install
-        npm run build
       env:
         CI: false
     - name: commit any updates
