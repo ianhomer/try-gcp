@@ -1,6 +1,12 @@
-name: Build
+name: build
 
-on: [push]
+on:
+  push:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["update"]
+    types:
+      - completed
 
 jobs:
   build:
@@ -12,15 +18,14 @@ jobs:
         node-version: [12.x]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: npm install
-      run: |
-        cd app-engine-nodejs
-        npm install
-      env:
-        CI: true
-
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install
+        run: |
+          cd app-engine-nodejs
+          npm install
+        env:
+          CI: true

@@ -1,9 +1,10 @@
-name: Update
+name: update
 
 on:
   push:
-  schedule: 
+  schedule:
     - cron: 0 0 * * 1
+  workflow_dispatch:
 
 jobs:
   update:
@@ -11,24 +12,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: 12.x
-    - name: update and build
-      run: |
-        cd app-engine-nodejs
-        npm install
-        npm run update
-        npm install
-      env:
-        CI: false
-    - name: commit any updates
-      run: |
-        if ! git diff --quiet --exit-code ; then
-          git config --local user.email "auto@purplepip.com"
-          git config --local user.name "Purple Pip Robot"
-          git commit -am "Auto-update"
-          git push
-        fi
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: update and build
+        run: |
+          cd app-engine-nodejs
+          npm install
+          npm run update
+          npm install
+        env:
+          CI: false
+      - name: commit any updates
+        run: |
+          if ! git diff --quiet --exit-code ; then
+            git config --local user.email "auto@purplepip.com"
+            git config --local user.name "Purple Pip Robot"
+            git commit -am "Auto-update"
+            git push
+          fi
